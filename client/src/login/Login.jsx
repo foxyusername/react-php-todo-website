@@ -2,6 +2,8 @@ import { useState } from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 
+import "./login.css"
+
 function Login(){
 
 let history = useNavigate();
@@ -17,7 +19,7 @@ let formData = new FormData();
 formData.append('username',username);
 formData.append('password',password);
 
- axios.post(""+import.meta.env.VITE_API_URL+"/login.php",formData)
+ axios.post(""+import.meta.env.VITE_API_URL+"/login.php",formData,{withCredentials:true})
  .then(res => handleResponse(res))
  .catch(err => console.error(err));
 
@@ -33,16 +35,15 @@ function handleResponse(res){
 
 }
 
- return <div>
+ return <div className="loginMainDiv">
     <form onSubmit={handleSumbit}>
 
     <input type="text" placeholder="username..." onChange={(e)=>{setUsername(e.target.value)}} required/>
     <input type="password" placeholder="password..." onChange={(e)=>{setPassword(e.target.value)}} required />
     <button>submit</button>
     <h1>{response?.message}</h1>
+    <a onClick={()=>{history('/signup')}}>SIGNUP</a>
     </form>
-
-  <a onClick={()=>{history('/signup')}}>SIGNUP</a>
  </div>
 }
 

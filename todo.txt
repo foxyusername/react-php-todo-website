@@ -1,2 +1,0 @@
-//work on the authentication and create protected route
-//solve the problem with sessions

@@ -1,7 +1,8 @@
 <?php
-session_start();
-header('Access-Control-Allow-Origin: *');
 include('./database.php');
+header("Access-Control-Allow-Origin: {$_ENV['CLIENT_URL']}");
+header('Access-Control-Allow-Credentials: true');
+use \Firebase\JWT\JWT;
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -25,14 +26,26 @@ $insertResult = mysqli_query($conn,$insertQuery);
 
 if (mysqli_error($conn)) {
     echo json_encode(array("message" => "Error occurred: " . mysqli_error($conn), "status" => 0));
-} else {
-    echo json_encode(array("message" => "Inserted user credentials successfully", "status" => 1));
-    
-//create session after succesfull registration
+} else {    
 
-//$lastId =mysqli_insert_id($conn);
-//$_SESSION['userId'] = $lastId;
+$userId =mysqli_insert_id($conn);
 
+  //create token
+
+  $expirationTime = time() + (10 * 365 * 24 * 60);
+  $issuedAt = time();
+  $payload = [
+   'iat' => $issuedAt,
+   'exp' => $expirationTime,
+   'userId' => $userId
+  ];
+
+  $jwt = JWT::encode($payload,$_ENV['SECRET_KEY'], 'HS256');
+
+//store token in cookie
+  setcookie("auth_token",$jwt,$expirationTime, "/", "", false, true);
+
+  echo json_encode(array("message" => "Inserted user credentials successfully", "status" => 1));
 }
 
 }else{

@@ -18,7 +18,7 @@ let history = useNavigate();
     formData.append('password',password);
     formData.append('email',email);
 
-    axios.post(""+import.meta.env.VITE_API_URL+"/signup.php", formData)
+    axios.post(""+import.meta.env.VITE_API_URL+"/signup.php", formData,{withCredentials:true})
       .then((res)=>handleResponse(res))
       .catch((err) => console.error(err));
 
@@ -26,7 +26,7 @@ let history = useNavigate();
 
   function handleResponse(res){
     setResponse(res.data.message)
-
+   console.log(res);
     if(res.data.status === 1){
      history('/home');
      console.log('redirected');
