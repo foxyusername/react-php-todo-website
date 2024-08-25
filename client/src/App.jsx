@@ -4,6 +4,7 @@ import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 
 import RegisterProtection from "./protectedRoutes/RegisterProtection.jsx";
 import HomeProtection from "./protectedRoutes/HomeProtection.jsx";
+import Loading from "../reusable_components/Loading.jsx";
 
 const Signup=lazy(()=> import('./signup/Signup.jsx'));
 const Login=lazy(()=> import('./login/Login.jsx'));
@@ -13,7 +14,7 @@ const Home=lazy(()=> import('./Home/Home.jsx'));
 function App(){
 return <div>
     <Router>
-        <Suspense fallback={<div><h1>Loading...</h1></div>}>   
+        <Suspense fallback={<Loading />}>   
         <Routes>
 
         <Route Component={RegisterProtection}>
@@ -25,7 +26,6 @@ return <div>
          <Route path="/home" Component={Home} />
         </Route>
          
-            
         </Routes>
         </Suspense>
     </Router>

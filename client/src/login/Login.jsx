@@ -36,14 +36,16 @@ function handleResponse(res){
 }
 
  return <div className="loginMainDiv">
+    <div className="form_header_div">
+      <h1>LOGIN</h1>
     <form onSubmit={handleSumbit}>
-
     <input type="text" placeholder="username..." onChange={(e)=>{setUsername(e.target.value)}} required/>
     <input type="password" placeholder="password..." onChange={(e)=>{setPassword(e.target.value)}} required />
     <button>submit</button>
     <h1>{response?.message}</h1>
-    <a onClick={()=>{history('/signup')}}>SIGNUP</a>
     </form>
+    <a onClick={()=>{history('/signup')}}>SIGNUP</a>
+    </div>
  </div>
 }
 

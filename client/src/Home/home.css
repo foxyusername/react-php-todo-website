@@ -1,0 +1,97 @@
+.homeMainDiv{
+    width: 100%;
+    min-height: 100svh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background-color: #FFF7F8;
+}
+
+.scalerDiv{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+}
+
+.header{
+    display: flex;
+    justify-content:space-between;
+    width: 100%;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.header h1{
+    font-family: sans-serif;
+    cursor: default;
+    font-size: 2rem;
+    color: rgb(34, 34, 34);
+}
+
+.header button{
+    background-color: rgb(80, 80, 246);
+    color: white;
+    border: 0;
+    border-radius: 10px;
+    width: 100px;
+    height: 40px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.header button:hover{
+    transform: scale(1.05);
+}
+
+.taskAdderDiv{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.taskAdderDiv section{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.taskAdderDiv section input{
+    height: 40px;
+    font-size: 0.95rem;
+    padding-left: 10px;
+    color: rgb(26, 26, 26);
+    font-weight: lighter;
+    outline: 0;
+}
+
+.taskAdderDiv form button{
+    margin-top: 20px;
+    width: 100%;
+    height: 30px;
+    font-size: 1rem;
+    background-color: rgb(80, 80, 246);
+    border: 0px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#logout{
+    width: 80px;
+    height: 30px;
+    border: 0px;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    font-size:0.9rem;
+   cursor: pointer;
+   transition: all 0.15s ease;
+}
+
+#logout:hover{
+    transform: scale(1.05);
+}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
+import "../login/login.css";
 
 function Signup() {
   const [username, setUsername] = useState('');
@@ -34,7 +35,9 @@ let history = useNavigate();
   }
 
   return (
-    <div>
+    <div className="loginMainDiv">
+    <div className="form_header_div">
+      <h1>SIGNUP</h1>
       <form onSubmit={onSubmit}>
         <input
           type="text"
@@ -60,11 +63,12 @@ let history = useNavigate();
           required
         />
         <button type="submit">Submit</button>
+
+        <h1>{response}</h1>
       </form>
       
     <a onClick={()=>{history('/login')}}>LOGIN</a>
-<h1>{response}</h1>
-
+</div>
     </div>
   );
 }

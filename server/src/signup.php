@@ -51,7 +51,7 @@ $userId =mysqli_insert_id($conn);
 }else{
 
     $response = array(
-        "message" => "user with same username already exists",
+        "message" => "username already exists",
         "status" => 2
     );
 
